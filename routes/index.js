@@ -7,9 +7,6 @@ router.use('/api', apiRoutes);
 router.route('/')
     .get(htmlIndex);
 
-router.route('/style.csss')
-    .get(htmlCss);
-
 router.route('/stats')
     .get(htmlStats);
 
