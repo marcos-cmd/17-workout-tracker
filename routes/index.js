@@ -1,16 +1,12 @@
 const router = require('express').Router();
-const apiRoutes = require('./apiRoutes/workoutRoutes');
-const { htmlIndex, htmlStats, htmlExercise, htmlCss } = require('../controllers/routesController');
-router.use('/api', apiRoutes);
+const path = require("path");
 
+router.get('/exercise', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/exercise.html'));
+});
 
-router.route('/')
-    .get(htmlIndex);
-
-router.route('/stats')
-    .get(htmlStats);
-
-router.route('/exercise')
-    .get(htmlExercise);
+router.get('/stats', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/stats.html'));
+});
 
 module.exports = router;
