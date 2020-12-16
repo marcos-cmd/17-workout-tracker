@@ -2,21 +2,24 @@ require('dotenv')
     .config()
 const express = require('express');
 const mongoose = require('mongoose');
+const app = express();
 const PORT = process.env.PORT || 3001;
 
-const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use(require('./routes'));
-
-
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
-});
+})
+    .then(() => console.log('Yee'))
+    .catch(e => console.log(e));
+
+mongoose.set('debug', true);
+
+app.use(require('./routes/api'));
+app.use(require('./routes/index'));
 
 app.listen(PORT, () => {
     console.log(`Server started listening on PORT ${PORT}`);
