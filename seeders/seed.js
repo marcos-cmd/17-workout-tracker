@@ -5,7 +5,9 @@ let db = require("../models");
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useFindAndModify: false
-});
+})
+  .then(() => console.log('Yee'))
+  .catch(e => console.log('mongo not connected', e));
 
 let workoutSeed = [
   {

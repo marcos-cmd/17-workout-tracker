@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGODB_URI, {
     useUnifiedTopology: true,
 })
     .then(() => console.log('Yee'))
-    .catch(e => console.log(e));
+    .catch(e => console.log('mongo not connected', e));
 
 mongoose.set('debug', true);
 
