@@ -1,5 +1,4 @@
-require('dotenv')
-    .config()
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -19,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 mongoose.set('debug', true);
 
 app.use(require('./routes/api'));
-app.use(require('./routes/index'));
+app.use(require('./routes/view'));
 
 app.listen(PORT, () => {
     console.log(`Server started listening on PORT ${PORT}`);
