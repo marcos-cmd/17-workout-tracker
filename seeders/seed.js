@@ -2,7 +2,8 @@ require('dotenv').config();
 let mongoose = require("mongoose");
 let db = require("../models");
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://user1:j2XJBYJSXmRJ7fl0@cluster0.8tfu7.mongodb.net/workouts?retryWrites=true&w=majority", {
+  useUnifiedTopology: true,
   useNewUrlParser: true,
   useFindAndModify: false
 });
